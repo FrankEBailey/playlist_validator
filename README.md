@@ -24,9 +24,28 @@ Perfect for music enthusiasts who have:
 
 No installation required! Simply download `playlist_validator.py` and run it with Python 3.6+.
 
+### Linux/Unix
 ```bash
 # Download the script
 wget https://raw.githubusercontent.com/yourusername/playlist-validator/main/playlist_validator.py
+
+# Make it executable (optional)
+chmod +x playlist_validator.py
+```
+
+### Windows
+```cmd
+# Download using PowerShell
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/yourusername/playlist-validator/main/playlist_validator.py" -OutFile "playlist_validator.py"
+
+# Or download using curl (if available)
+curl -o playlist_validator.py https://raw.githubusercontent.com/yourusername/playlist-validator/main/playlist_validator.py
+```
+
+### macOS
+```bash
+# Download the script (same as Linux)
+curl -o playlist_validator.py https://raw.githubusercontent.com/yourusername/playlist-validator/main/playlist_validator.py
 
 # Make it executable (optional)
 chmod +x playlist_validator.py
@@ -38,60 +57,98 @@ chmod +x playlist_validator.py
 
 Scan your music collection and show only broken playlists:
 
+**Linux/macOS:**
 ```bash
 python playlist_validator.py ~/Music
 ```
 
+**Windows:**
+```cmd
+python playlist_validator.py "C:\Users\%USERNAME%\Music"
+# Or using forward slashes
+python playlist_validator.py "C:/Users/%USERNAME%/Music"
+```
+
 Show all playlists (both valid and invalid):
 
+**Linux/macOS:**
 ```bash
 python playlist_validator.py ~/Music --show-valid
 ```
 
+**Windows:**
+```cmd
+python playlist_validator.py "C:\Users\%USERNAME%\Music" --show-valid
+```
+
 Quick scan with minimal output:
 
+**Linux/macOS:**
 ```bash
 python playlist_validator.py ~/Music --no-details
+```
+
+**Windows:**
+```cmd
+python playlist_validator.py "C:\Users\%USERNAME%\Music" --no-details
 ```
 
 ### Quarantine Broken Playlists
 
 Move invalid playlists to a quarantine directory:
 
+**Linux/macOS:**
 ```bash
 python playlist_validator.py ~/Music --quarantine ~/broken_playlists
 ```
 
+**Windows:**
+```cmd
+python playlist_validator.py "C:\Users\%USERNAME%\Music" --quarantine "C:\Users\%USERNAME%\Desktop\broken_playlists"
+```
+
 Preview what would be moved without actually doing it:
 
+**Linux/macOS:**
 ```bash
 python playlist_validator.py ~/Music --quarantine ~/broken_playlists --dry-run
 ```
 
-Quarantine with minimal output:
-
-```bash
-python playlist_validator.py ~/Music --quarantine ~/broken_playlists --no-details
+**Windows:**
+```cmd
+python playlist_validator.py "C:\Users\%USERNAME%\Music" --quarantine "C:\Users\%USERNAME%\Desktop\broken_playlists" --dry-run
 ```
 
-### Real-World Examples
+### Platform-Specific Examples
 
-Check a specific artist's folder:
-
+**Linux:**
 ```bash
-python playlist_validator.py "~/Music/Pink Floyd" --show-valid
+# Scan external drive
+python playlist_validator.py /media/external_drive/Music --quarantine /home/user/broken_playlists
+
+# Scan with spaces in path
+python playlist_validator.py "/home/user/My Music Collection" --show-valid
 ```
 
-Clean up your entire collection and quarantine broken playlists:
-
+**macOS:**
 ```bash
-python playlist_validator.py ~/Music --quarantine ~/Desktop/broken_playlists
+# Scan iTunes Music folder
+python playlist_validator.py "~/Music/Music/Media.localized/Music" --show-valid
+
+# Scan external drive
+python playlist_validator.py "/Volumes/External Drive/Music" --quarantine ~/Desktop/broken_playlists
 ```
 
-Test run before making changes:
+**Windows:**
+```cmd
+# Scan different drive
+python playlist_validator.py "D:\Music Collection" --quarantine "C:\temp\broken_playlists"
 
-```bash
-python playlist_validator.py ~/Music --quarantine ~/Desktop/broken_playlists --dry-run
+# Scan iTunes folder
+python playlist_validator.py "C:\Users\%USERNAME%\Music\iTunes\iTunes Media\Music" --show-valid
+
+# Using UNC paths (network drives)
+python playlist_validator.py "\\server\music" --quarantine "C:\quarantine"
 ```
 
 ### Command Line Options
@@ -215,6 +272,26 @@ MP3, FLAC, WAV, M4A, AAC, OGG, WMA, APE, OPUS, AIFF, DSF, DFF, MPC, TTA
 
 - Python 3.6 or higher
 - No external dependencies (uses only Python standard library)
+
+### Platform Notes
+
+**Windows:**
+- Supports both forward slashes (`/`) and backslashes (`\`) in paths
+- Handles UNC paths for network drives (`\\server\share`)
+- Works with Windows-style drive letters (`C:\`, `D:\`, etc.)
+- Automatically handles Windows path length limitations
+
+**macOS:**
+- Full Unicode support for international characters in filenames
+- Handles macOS-specific file attributes and resource forks
+- Compatible with case-insensitive HFS+ and case-sensitive APFS filesystems
+- Works with iTunes/Music app folder structures
+
+**Linux:**
+- Supports all filesystem types (ext4, btrfs, xfs, etc.)
+- Handles symbolic links correctly
+- Full Unicode filename support
+- Works with mounted network filesystems (NFS, CIFS/SMB)
 
 ## Contributing
 
