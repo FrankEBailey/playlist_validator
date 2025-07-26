@@ -27,7 +27,7 @@ No installation required! Simply download `playlist_validator.py` and run it wit
 ### Linux/Unix
 ```bash
 # Download the script
-wget https://raw.githubusercontent.com/yourusername/playlist-validator/main/playlist_validator.py
+wget https://raw.githubusercontent.com/FrankEBailey/playlist_validator/main/playlist_validator.py
 
 # Make it executable (optional)
 chmod +x playlist_validator.py
@@ -36,16 +36,16 @@ chmod +x playlist_validator.py
 ### Windows
 ```cmd
 # Download using PowerShell
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/yourusername/playlist-validator/main/playlist_validator.py" -OutFile "playlist_validator.py"
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/FrankEBailey/playlist_validator/main/playlist_validator.py" -OutFile "playlist_validator.py"
 
 # Or download using curl (if available)
-curl -o playlist_validator.py https://raw.githubusercontent.com/yourusername/playlist-validator/main/playlist_validator.py
+curl -o playlist_validator.py https://raw.githubusercontent.com/FrankEBailey/playlist_validator/main/playlist_validator.py
 ```
 
 ### macOS
 ```bash
 # Download the script (same as Linux)
-curl -o playlist_validator.py https://raw.githubusercontent.com/yourusername/playlist-validator/main/playlist_validator.py
+curl -o playlist_validator.py https://raw.githubusercontent.com/FrankEBailey/playlist_validator/main/playlist_validator.py
 
 # Make it executable (optional)
 chmod +x playlist_validator.py
